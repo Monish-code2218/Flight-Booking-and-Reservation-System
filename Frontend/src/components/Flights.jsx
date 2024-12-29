@@ -14,7 +14,7 @@ const Flights = () => {
 
   const fetchFlights = async () => {
     try {
-      const response = await axios.get(`https://flightbackend-tbsa.onrender.com/flights`);
+      const response = await axios.get(`https://flightbackend-1.onrender.com/flights`);
       setFlights(response.data);
     } catch (error) {
       console.error('Error fetching :', error);

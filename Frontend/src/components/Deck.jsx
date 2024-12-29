@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Tab.css'
 import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
@@ -13,7 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import {loadStripe} from '@stripe/stripe-js'
+import { loadStripe } from '@stripe/stripe-js'
 
 
 
@@ -33,27 +33,27 @@ const Deck = () => {
 
 
 
-  
 
 
 
-  
+
+
   const fetchFlight = async () => {
-    try{
-    const response = await axios.get(`https://flightbackend-tbsa.onrender.com/flights/${_id}`)
-    setFlight(response.data);
-    }catch(error){
+    try {
+      const response = await axios.get(`https://flightbackend-1.onrender.com/flights/${_id}`)
+      setFlight(response.data);
+    } catch (error) {
       console.log(error)
 
     }
   }
 
 
-  useEffect(()=>{    
-  fetchFlight();
-  },[])
+  useEffect(() => {
+    fetchFlight();
+  }, [])
 
-  
+
 
   const handleRemovePassenger = (index) => {
     const list = [...Passengers];
@@ -118,6 +118,7 @@ const Deck = () => {
                     <label className="form-check-label block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300" htmlFor={`male-${index}`} onClick={e => handleGender(e, seat)}>Male</label>
                     <input className="form-check-input w-4 m-3 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600" type="radio" name={`gender-${index}`} id={`female-${index}`} value="Female" />
                     <label className="form-check-label block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300" htmlFor={`female-${index}`} onClick={e => handleGender(e, seat)} >Female</label>
+                    <button className='w-4 m-3' onClick={handleRemovePassenger}>remove</button>
                   </div>
                 </fieldset>
               </div>
@@ -315,48 +316,49 @@ const Deck = () => {
             </div>
           </div>
           <div className="column1">
-          <Table>
-  
-  <TableHeader>
-    <TableRow>
-      <TableHead className="w-[100px]">Airlines</TableHead>
-      <TableHead>From</TableHead>
-      <TableHead>To</TableHead>
-      <TableHead className="text-right">Price</TableHead>
-    </TableRow>
-  </TableHeader>
-  <TableBody>
-    <TableRow>
-      <TableCell className="font-medium">{flight.airlines}</TableCell>
-      <TableCell>{flight.from}</TableCell>
-      <TableCell>{flight.to}</TableCell>
-      <TableCell className="text-right">₹ {flight.fare}</TableCell>
-    </TableRow>
-  </TableBody>
-</Table>
+            <Table>
 
-            </div>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[100px]">Airlines</TableHead>
+                  <TableHead>From</TableHead>
+                  <TableHead>To</TableHead>
+                  <TableHead className="text-right">Price</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-medium">{flight.airlines}</TableCell>
+                  <TableCell>{flight.from}</TableCell>
+                  <TableCell>{flight.to}</TableCell>
+                  <TableCell className="text-right">₹ {flight.fare}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+
+          </div>
           <div className="column2">
-          
-              
+
+
             <div className="seatInfo">
               <form className="form-group">
                 {renderPassengerData(seatNumber)}
-              </form>              
-                <div className='flex justify-center '>      
+              </form>
+              <div className='flex justify-center '>
+
+
                 
-   
-                <button onClick={ handleRemovePassenger }>remove</button>
-                <button onClick={e => handleSubmitDetails(e)} className="btn btn-info seatBT">
-                                Confirm Details
-                            </button>
-                            <Link to={"/payment"}>
-                            <Button></Button>
-                            </Link>
+                <button  onClick={e => handleSubmitDetails(e)} className="">
+                  Confirm Details
+                </button>
                 
-                
-                
+
+
+
               </div>
+              <Link to={"/payment"}>
+                  <Button>Proceed to pay</Button>
+                </Link>
               <div >
 
               </div>

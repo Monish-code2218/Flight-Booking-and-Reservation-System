@@ -13,7 +13,7 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://flightbackend-tbsa.onrender.com/signup', { email, password })
+      const response = await axios.post('https://flightbackend-1.onrender.com/signup', { email, password })
       localStorage.setItem('token', response.data.token)
       console.log(response.data)
       navigate('/login')

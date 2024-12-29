@@ -24,7 +24,7 @@ export default function Home() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/flights/:id' element={<Deck />} />
           <Route path='/payment' element={<Payments />} />
-          <Route path='/getTicket' element={<TicketPage />} />
+          <Route path='/payment/getTicket/:id' element={<TicketPage />} />
         </Routes>
       </Router>
     </div>

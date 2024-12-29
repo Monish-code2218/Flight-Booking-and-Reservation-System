@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import Card from 'react-credit-cards'
 import './PaymentTab.css'
-
-
+import axios from 'axios'
 import {
     formatCreditCardNumber,
     formatCVC, 
@@ -10,8 +9,12 @@ import {
     formatFormData
 } from './utils'
 import 'react-credit-cards/es/styles-compiled.css'
+import { Button } from './ui/button'
+import { Link } from 'react-router-dom'
 
 export default class App extends React.Component {
+    
+        
     state = {
         number: '',
         name: '', 
@@ -68,7 +71,7 @@ export default class App extends React.Component {
     moveToTicketPage = e => {
         e.preventDefault()
         localStorage.setItem('paymentData', JSON.stringify(this.state.token))
-        window.location.href = '/getTicket'
+        
     }
 
     renderNamesOfPassenger = () => {
@@ -91,6 +94,16 @@ export default class App extends React.Component {
         }
     }
 
+    fetchFlight = async () => {
+        let _id = localStorage.getItem('_id')
+       try {
+            const response = await axios.get(`https://flightbackend-1.onrender.com/flights/${_id}`)
+            console.log(response.data)
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
     getSumTotal = () => {
         let count = 0
         let tax = 150
@@ -107,7 +120,10 @@ export default class App extends React.Component {
         }
     }
 
-    render() {
+    
+
+    render()  {
+    
         const {
             name,
             number,
@@ -118,9 +134,10 @@ export default class App extends React.Component {
             formData,
             token
         } = this.state
-
-        return (<div className='paym' >
-            <div className='row' >
+               
+        return  (<div className='paym' >
+            
+            <div className='flex items-center' >
                 <div key='Payment' >
                     <div className='App-payment cl-1' >
                         <p className='pPayment' > Enter Credit card details </p>{' '}
@@ -174,11 +191,13 @@ export default class App extends React.Component {
                                 name='issuer'
                                 value={issuer}
                             />{' '}
-                            <div className='' >
-                                <button onClick={e => this.moveToTicketPage(e)}
-                                    className='btn btn-light btCustom' >
+                            <div className='py-1' >
+                                <Link to='/payment/getTicket/:id' >
+                                <Button 
+                                     >
                                     PAY {' '}
-                                </button>{' '}
+                                </Button>{' '}
+                                </Link>
                             </div>{' '}
                         </form>{' '}
                     </div>{' '}
@@ -214,3 +233,5 @@ export default class App extends React.Component {
         )
     }
 }
+
+

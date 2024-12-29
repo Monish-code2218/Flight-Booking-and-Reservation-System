@@ -42,9 +42,7 @@ The Flight ticket booking app is composed of the following Features:
 * This version does not support dynamic seat data being stored from cloud.
 
 
-This project also demonstrates:
 
-* a typcial React project layout structure
 
 
 

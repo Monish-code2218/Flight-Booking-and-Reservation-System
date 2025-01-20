@@ -2,7 +2,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import "react-toastify/dist/ReactToastify.css";
+//import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from 'react-toastify'
 import LoadingButton from "../components/LoadingButton";
 const Signup = () => {

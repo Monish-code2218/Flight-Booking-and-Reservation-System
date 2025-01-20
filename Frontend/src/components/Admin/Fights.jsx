@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { Button } from '../ui/button'
-import "react-toastify/dist/ReactToastify.css";
+
 import { toast, ToastContainer } from 'react-toastify'
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';

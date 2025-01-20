@@ -13,7 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import "react-toastify/dist/ReactToastify.css";
+
 import { toast, ToastContainer } from 'react-toastify'
 
 

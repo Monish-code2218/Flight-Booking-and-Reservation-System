@@ -10,10 +10,13 @@ import {
 } from './utils'
 import 'react-credit-cards/es/styles-compiled.css'
 import { Button } from './ui/button'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import Flights from './Flights'
+
 
 const Payment = () => {
-     const [flight, setFlight] = useState([]);
+    const { id: _id } = useParams();
+    const [flights, setFlight] = useState([]);
     const [state, setState] = useState({
         number: '',
         name: '',
@@ -90,18 +93,18 @@ const Payment = () => {
 
     const fetchFlight = async () => {
         try {
-          const response = await axios.get(`https://flightbackend-2.onrender.com/flights/${_id}`)
-          setFlight(response.data);
+            const response = await axios.get(`https://flightbackend-2.onrender.com/flights/${_id}`)
+            setFlight(response.data);
         } catch (error) {
-          console.log(error)
-    
+            console.log(error)
+
         }
-      }
-    
-    
-      useEffect(() => {
+    }
+
+
+    useEffect(() => {
         fetchFlight();
-      }, [])
+    }, [])
 
 
     const getSumTotal = () => {
@@ -147,7 +150,7 @@ const Payment = () => {
                             focused={focused}
                             callback={handleCallback} />{' '}
                         <form className='credit-form'
-                           // ref={c => (formRef = c)}
+                            // ref={c => (formRef = c)}
                             onSubmit={handleSubmit}>
                             <div className='form-group'>
                                 <input type='tel'
@@ -189,17 +192,19 @@ const Payment = () => {
                                 name='issuer'
                                 value={issuer}
                             />{' '}
-                            
+
                             <div className=''>
-                               
-                                    <div >
-                                        <Link to={`/payment/getTicket/${flight._id}`}>
+                            
+                            
+                                    <div>
+                                        <Link to={`/payment/getTicket/${_id}`}>
                                             <Button>
-                                                PAY 
+                                                PAY
                                             </Button>
                                         </Link>
                                     </div>
-                                
+                             
+                
                             </div>
                         </form>{' '}
                     </div>{' '}
@@ -210,30 +215,27 @@ const Payment = () => {
                         <p className='w-full  text-center text-gray-900 text-xl  font-manrope leading-9'> BOOKING DETAILS </p>{' '}
                         <div className='row'>
                             <div className='col-6 pt'>
-                                <p className='hdng'> Username </p> <hr className='hr3' />
-                                <p className='hdng'> Date:{flight.date} </p> <p className='hdng'> From </p>
-                                <p className='hdng'> To </p> <hr className='hr3' />
-                                <p className='hdng'> Passengers </p>{' '} {renderNamesOfPassenger()} <hr className='hr3' />
-                                <p className='hdng'> Ticket price </p>{' '}
-                                <p className='hdng'> Tax </p>{' '}
-                                <p className='hdng'> Total Sum </p>{' '} </div>{' '}
+                                <p className='hdng'>  </p> <hr className='hr3' />
+                                <p className='hdng'> Date:    {flights.date} </p> <p className='hdng'> From:    {flights.from} </p>
+                                <p className='hdng'> To:       {flights.to}  </p> 
+                                <p className='hdng'> Passengers : {renderNamesOfPassenger()} </p>{' '}  
+                                <p className='hdng'> Ticket price :           {flights.fare} </p>{' '}
+                                <p className='hdng'> Tax : 12% </p>{' '}
+                                <p className='hdng'> Total Sum :{flights.fare}  </p>{' '} </div>{' '}
                             <div className='col-6'>
                                 <br></br>
                                 <hr className='hr3' />
-                                <p className='usrName'> {' '} {localStorage.getItem('date')} {' '} </p>{' '}
-                                <p className='usrName'> {localStorage.getItem('from')} </p>{' '}
-                                <p className='usrName'> {' '} {localStorage.getItem('to')} {' '} </p>{' '}
+                              
                                 <hr className='hr3' />
                                 <p className='hdng'>Seat No {' '} </p> {renderSeatNumbers()}
-                                <p> {getSumTotal()} </p>
+                                
                             </div>{' '}
                         </div>{' '}
                     </div>{' '}
                 </div>{' '}
             </div>{' '}
         </div>
-    );
-}
+    );}
 
 
 export default Payment;

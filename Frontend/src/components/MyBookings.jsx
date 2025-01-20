@@ -22,7 +22,7 @@ const MyBookings = () => {
     }, [])
 
     return (
-        <div className='bg-gray-100' >
+        <div className='bg-gray-100  ' >
             <section class=" py-8 antialiased  md:py-16">
                 <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
                     <div class="mx-auto max-w-5xl">
@@ -34,9 +34,9 @@ const MyBookings = () => {
                                 <div>
                                 </div>
                             </div>
-                        </div>
+                            </div>
                             
-                            <div class="mt-6 flow-root sm:mt-8">
+                            <div class="mt-6 flow-root sm:mt-8 bg-gray-100 ">
                                 <div class="divide-y bg-gray-100">
                                     <div class="flex flex-wrap items-center gap-y-4 py-6">
                                         <dl class="w-1/2 sm:w-1/4 lg:w-auto lg:flex-1">
@@ -77,6 +77,7 @@ const MyBookings = () => {
                 </div>
             </section>
         </div>
+        
     )
 }
 

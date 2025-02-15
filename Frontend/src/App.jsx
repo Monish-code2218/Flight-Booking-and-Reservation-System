@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar'
+
 import Hero from './components/Hero'
 import Login from './components/Login'
 import Flights from './components/Flights'
@@ -18,8 +18,8 @@ import MyBookings from './components/MyBookings'
 export default function Home() {
   return (
     <div>
-      <Router>
-        <Navbar />
+        <Router>
+        
         <Routes>
         <Route path='/' element={<MainPage />} />
           <Route path="/home" element={<Hero />} />

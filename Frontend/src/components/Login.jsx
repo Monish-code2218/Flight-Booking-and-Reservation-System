@@ -5,7 +5,6 @@ import { GoogleOAuthProvider } from '@react-oauth/google'
 import { GoogleLogin } from '@react-oauth/google'
 import { Input } from './ui/input'
 import { useNavigate } from 'react-router-dom'
-import Toast from '../components/Toast'
 import LoadingButton from "../components/LoadingButton";
 import axios from 'axios'
 //import "react-toastify/dist/ReactToastify.css";

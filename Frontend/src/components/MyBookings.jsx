@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { Button } from './ui/button'
+import Navbar from './Navbar'
 
 const MyBookings = () => {
     const { id: _id } = useParams()
@@ -23,6 +24,7 @@ const MyBookings = () => {
 
     return (
         <div className='bg-gray-100  ' >
+             <Navbar />
             <section class=" py-8 antialiased  md:py-16">
                 <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
                     <div class="mx-auto max-w-5xl">

@@ -11,7 +11,8 @@ import {
 import 'react-credit-cards/es/styles-compiled.css'
 import { Button } from './ui/button'
 import { Link, useParams } from 'react-router-dom'
-import Flights from './Flights'
+
+import Navbar from './Navbar';
 
 
 const Payment = () => {
@@ -136,7 +137,11 @@ const Payment = () => {
     } = state;
 
     return (
+        <div>
+        <Navbar />
+        
         <div className='paym bg-gray-100 p-10'>
+            
             <div className='flex items-center'>
                 <div key='Payment'>
                     <div className='App-payment cl-1'>
@@ -234,6 +239,7 @@ const Payment = () => {
                     </div>{' '}
                 </div>{' '}
             </div>{' '}
+        </div>
         </div>
     );}
 

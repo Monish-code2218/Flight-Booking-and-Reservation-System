@@ -1,6 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
+import Navbar from '../Navbar';
+
 
 export default function TicketPage() {
 	
@@ -65,6 +67,7 @@ export default function TicketPage() {
 
 	return (
 		<div className="bg-gray-100">
+			 <Navbar />
 			<br />
 			<div className='hover:underline   text-center text-2xl font-bold'>
 			<Link to={`/MyBookings/${_id}`}>

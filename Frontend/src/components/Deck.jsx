@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/table"
 
 import { toast, ToastContainer } from 'react-toastify'
-
+import Navbar from './Navbar';
 
 
 
@@ -49,6 +49,7 @@ const Deck = () => {
 
 
   useEffect(() => {
+
     fetchFlight();
   }, [])
 
@@ -59,7 +60,7 @@ const Deck = () => {
     list.splice(index, 1);
     setPassengers(list);
     toast.success('Removed Passenger Successfully');
-     
+
   };
 
   const getSeatNumber = (e) => {
@@ -102,14 +103,14 @@ const Deck = () => {
   }
 
   const renderPassengerData = (seatArray) => {
-    return seatArray.map((seat, idx) => {
+    return  seatArray.map((seat, idx) => {
       return (
         <form key={idx} className="max-w-sm py-1 px-5">
-         
+
           <div className=" mb-4">
             <label htmlFor="name" className="  mb-2 text-lg font-medium text-gray-900 dark:text-white p-2">Name</label>
             <label class=" font-semibold p-2  text-sm  text-gray-900 dark:text-white">Seat No:{seat}</label>
-            
+
             {Passengers.map((passenger, index) => (
               <div key={index}>
                 <input type="name" onBlur={e => handlePassengerName(e, seat)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name" required />
@@ -137,7 +138,9 @@ const Deck = () => {
 
   return (
     <div>
+       <Navbar />
       <div className="bg-gray-100 p-10">
+     
         <div className="row">
           <div className="column1">
             <div className="plane">
@@ -357,21 +360,21 @@ const Deck = () => {
               <div className='flex justify-center items-center p-3'>
                 <Button onClick={handleRemovePassenger}>remove</Button>
                 <div className='flex justify-center items-center p-3'>
-                <Button onClick={e => handleSubmitDetails(e)} className="btn btn-info seatBT">
-                  Confirm Details
-                </Button>
-              </div>
-           
+                  <Button onClick={e => handleSubmitDetails(e)} className="btn btn-info seatBT">
+                    Confirm Details
+                  </Button>
+                </div>
+
                 <div className='flex justify-center items-center p-12'>
-                <Link  to={`/payment/${flight._id}`}>
-                
-                  <Button >Proceed To Payment</Button>
-                </Link>
+                  <Link to={`/payment/${flight._id}`}>
+
+                    <Button >Proceed To Payment</Button>
+                  </Link>
+                </div>
+
               </div>
-              
-              </div>
-             
-              
+
+
             </div>
           </div>
         </div>

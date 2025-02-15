@@ -7,7 +7,8 @@ const MainPage = () => {
        
     return (
 
-        <body class="bg-gradient-to-b from-gray-100 to-gray-100 flex  space-x-4   items-center justify-center h-screen ">
+        <body class=" h-screen md:flex bg-[url(components/f1.jpeg)] flex  space-x-4   items-center justify-center">
+            <div class=" ..."></div>
             <div className='space-x-4'>
                 <Link to='/login'>
                 <Button>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {
     Sheet,
     SheetContent,
@@ -9,14 +9,18 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 import { Button } from './ui/button'
+import { useAuth } from '@/services/AuthProvider'
+
 
 
 const Navbar = () => {
-    
+    const {logout } = useAuth();
+    const navigate = useNavigate();
+
     return (
         <nav className='bg-white flex-wrap  p-4 flex justify-between items-center'>
             <div className="">
-                <Link to="/">
+                <Link to="/home">
                     <img src="/assets/images/icon.png" alt="" className='w-36' />
                 </Link>
             </div>
@@ -43,7 +47,16 @@ const Navbar = () => {
                     </div>
                 </div>
                 <>
-                    <Button><Link to="/login">Login</Link></Button>
+                    <Button
+                        whileHover={{ scale: 1.05 }}
+                        onClick={() => {
+                            logout();
+                            navigate("/");
+                        }}
+                        className="items-center justify-center border align-middle select-none font-sans font-medium text-center duration-300 ease-in disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed focus:shadow-none text-lg py-1.5 px-3 shadow-sm hover:shadow  relative  text-white rounded-lg hover:bg-gradient-to-b hover:from-red-600 hover:to-red-600 hover:border-red-700 after:absolute after:inset-0 after:rounded-[inherit] after:box-shadow after:shadow-[inset_0_1px_0px_rgba(255,255,255,0.25),inset_0_-2px_0px_rgba(0,0,0,0.35)] after:pointer-events-none transition antialiased  lg:ml-auto lg:inline-block"
+                        >
+                        Logout
+                    </Button>
                     <nav className="md:hidden items-center justify-center">
                         <Sheet>
                             <SheetTrigger>

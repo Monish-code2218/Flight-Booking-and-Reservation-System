@@ -6,6 +6,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
 import axios from 'axios'
+import Navbar from './Navbar';
 
 
 const Flights = () => {
@@ -30,6 +31,7 @@ const Flights = () => {
 
   return (
     <div className="relative overflow-x-auto bg-gray-100">
+      <Navbar />
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
           <tr>
